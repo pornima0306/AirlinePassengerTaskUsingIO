@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-10 offset-1">
+        <div class="card mb-4">
+            <div class="card-header" 
+            [ngClass]="{'bg-success' : cardObj.checkedIn===true, 'bg-danger' : cardObj.checkedIn===false}">
+                <strong *ngIf="flag" class="text-white">{{cardObj.fullname}}</strong>
+                <input  *ngIf="!flag"type="text" [value]="cardObj.fullname" class="form-control"
+                (input)="onInput($event)">
+            </div>
+            <div class="card-body"
+            [ngClass]="{'alert-success' : cardObj.checkedIn===true, 'alert-danger' : cardObj.checkedIn===false}">
+                <p>Checked In Date : {{(cardObj.checkInDate | date) ? (cardObj.checkInDate | date) : 'Not Checked in' }}</p>
+                <p>Children : {{cardObj.children === null ? '0' : cardObj.children.length}}</p>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2><i class="fas fa-plane-departure text-primary ml-2" 
+                            [ngClass]="{'text-success' : cardObj.checkedIn===true, 'text-danger' : cardObj.checkedIn===false}"></i></h2>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button class="btn btn-outline-success mr-2" 
+                        (click)="onEditClick($event)" *ngIf="flag">Edit</button>
+                        <button class="btn btn-outline-success mr-2" 
+                        (click)="onDoneClick($event)" *ngIf="!flag">Done</button>
+                        <button class="btn btn-outline-danger mr-4" 
+                        (click)="onRemoveClick($event)">Remove</button>
+                    </div>
+                </div>   
+            </div>
+             
+        </div>
+    </div>
+</div>

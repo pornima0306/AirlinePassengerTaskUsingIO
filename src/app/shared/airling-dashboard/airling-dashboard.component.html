@@ -1,0 +1,17 @@
+
+<section class="main bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <h1 class="text-primary text-center mt-4"><i class="fas fa-plane-departure text-primary"></i> Airline Passengers!</h1>
+            <app-pass-count [getArrayFromAirline]="passengers" [totalCount]="countCheck"></app-pass-count>
+            <h5 class="text-center mb-4">Passengers List : <span *ngFor="let name of passengers">{{name.fullname}} <i class="fas fa-grip-lines-vertical pr-2 text-primary"></i></span></h5>
+            <app-pass-card *ngFor="let Obj of passengers" [cardObj]="Obj" (sendObjToDash)="receivedObjFromCard($event)"></app-pass-card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
